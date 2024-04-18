@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'core/reset.css' %}">
+        <link rel="stylesheet" href="{% static 'core/index.css' %}">
+        <link rel="stylesheet" href="{% static 'core/detail.css' %}">
+        <link rel="stylesheet" href="{% static 'core/signup_login.css' %}">
+        <link rel="stylesheet" href="{% static 'core/newitem.css' %}">
+        <link rel="stylesheet" href="{% static 'core/conversation.css' %}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+
+
+        <title>
+            {% block title %}
+            {% endblock %} | Thunder Marketplace
+        </title>
+    </head>
+
+    <body>
+        <nav class="upper-nav">
+            <a href="/" class="thunder-title">THUNDER</a>
+
+            <div class="right-side-nav-elems">
+                <a href="{% url 'item:new' %}" class="right-side-elem browse-new-item">New item</a>
+                <a href="{% url 'item:items' %}" class="right-side-elem browse-new-item">Browse</a>
+
+                {% if request.user.is_authenticated %}
+
+                    <a href="{% url 'conversation:inbox' %}" id="inbox-button" class="right-side-elem upper-right-btns">Inbox</a>
+                    <a href="{% url 'dashboard:index' %}" id="dashboard-button" class="right-side-elem upper-right-btns ">Dashboard</a>
+
+                    <form action="{% url 'core:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="logout-btn" type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'core:signup' %}" id="sign-up-button" class="right-side-elem upper-right-btns">Sign Up</a>
+                    <a href="{% url 'core:login' %}" id="log-in-button" class="right-side-elem upper-right-btns ">Log In</a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="main-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer id="footer-id">
+            <div class="">
+                <h4 class="">About</h4>
+                
+                <p class="footer-about-description">Information about the website to be displayed right here in this section.</p>
+            </div>
+            
+            <div class=" footer-menu">
+                <h3>Menu</h3>
+                <ul class="ul-footer">
+                    <li><a href="#" class="">About</a></li>
+                    <li><a href="{% url 'core:contact' %}" class="">Contact</a></li>
+                    <li><a href="#" class="">Privacy Policy</a></li>
+                    <li><a href="#" class="">Terms of use</a></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

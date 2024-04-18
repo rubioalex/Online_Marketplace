@@ -1,0 +1,65 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}
+    {{ item.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="detail-container">
+
+            <img src="{{ item.image.url }}" class="detail-image-item" alt="">
+
+        <div class="detail-details">
+            <p id="detail-item-title">{{ item.name }}</p>
+            <p class=""><strong>Price: </strong>{{ item.price }} $</p>
+            <p class=""><strong>Seller: </strong>{{ item.created_by.username }}</p>
+
+            {% if item.description %}
+            <p class=""><strong>Description:</strong>
+                <br>
+                {{ item.description }}
+            </p>
+            {% endif %}
+
+            {% if request.user == item.created_by %}
+                <div class="edit-delete-container">
+                    <p class="own-ph">You own this item</p>
+
+                    <a id="own-edit-btn" class="own-btn" href="{% url 'item:edit' item.id %}">Edit</a>
+                    <a id="own-delete-btn" class="own-btn" href="{% url 'item:delete' item.id %}">Delete</a>
+                </div>
+            {% else %}
+                <a href="{% url 'conversation:new' item.id %}" style="color: white">
+                    <div class="contact-seller-button">
+                        Contact Seller
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="items-container" id="related-items-container">
+        <p class="container-title">Related Items</p>
+
+        {% if related_items %}
+        <div class="items-grid">
+            {% for item in related_items %}
+            <div class="item-card">
+                <a href="{% url 'item:detail' item.id %}">
+                    <div>
+                        <img class="item-image" src="{{ item.image.url }}" alt="">
+                    </div>
+
+                    <div class="item-description">
+                        <p class="item-name">{{ item.name }}</p>
+                        <p class="item-price">Price: {{ item.price }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p>No related items...</p>
+        {% endif %}
+    </div>
+{% endblock %}

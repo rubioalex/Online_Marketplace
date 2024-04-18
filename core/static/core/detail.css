@@ -1,0 +1,79 @@
+/* DETAIL.HTML STYLES ---START--- */
+.detail-image-item {
+    height: 480px;
+    width: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+
+.detail-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.detail-details {
+    padding-left: 30px;
+    padding-top: 20px;
+    font-family: Roboto, Arial, sans-serif;
+    border-radius: 20px;
+    width: 63%;
+    background-color: rgb(247, 247, 247);
+}
+
+.detail-details > p {
+    margin-bottom: 12px;
+    font-weight: 300;
+}
+
+#detail-item-title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.contact-seller-button {
+    display: inline-block;
+    background-color: blueviolet;
+    padding: 10px 15px;
+    margin-top: 30px;
+    font-family: "Tilt Neon", Arial, Helvetica, sans-serif;
+}
+
+.contact-seller-button:hover {
+    background-color: rgba(137, 43, 226, 0.743);
+}
+
+.contact-seller-button:active {
+    background-color: rgba(137, 43, 226, 0.473);
+}
+
+#related-items-container {
+    margin-bottom: 50px;
+}
+
+.own-ph {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.own-btn {
+    padding: 5px 10px;
+    color: white;
+}
+
+#own-edit-btn {
+    background-color: rgb(255, 164, 6);
+    margin-right: 5px;
+}
+
+#own-delete-btn {
+    background-color: rgb(220, 2, 2);
+}
+
+/* DETAIL.HTML STYLES ---END--- */

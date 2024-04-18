@@ -1,0 +1,103 @@
+/* SIGNUP.HTML (AND) LOGIN.HTML STYLES ---START--- */
+.form-container {
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+
+.form-body {
+    background-color: rgba(137, 43, 226, 0.767);
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 30px;
+}
+
+.form-field, .newitem-field {
+    padding: 15px 15px;
+    width: 370px;
+    margin-top: 5px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.form-field:hover {
+    background-color: rgb(246, 246, 246);
+}
+
+.form-field:focus {
+    box-shadow: 0px 0px 5px black;
+}
+
+.form-title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.signup-login-button {
+    padding: 12px 16px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(247, 246, 246);
+    font-family: "Tilt Neon", Arial, Helvetica, sans-serif;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    margin-top: 25px;
+    color: rgb(137, 43, 226);
+    transition: box-shadow 0.2s;
+    border: 3px solid blueviolet;
+}
+
+.signup-login-button:hover {
+    box-shadow: 2px 2px 5px black;
+}
+
+#login-form-body {
+    background-color: rgba(40, 138, 25, 0.723);
+}
+
+#login-button {
+    color: rgb(40, 138, 25);
+    border: 3px solid rgb(40, 138, 25);
+}
+
+.errors-field {
+    color: white;
+}
+
+#inbox-button {
+    background-color: rgb(181, 2, 2);
+    transition: background-color 0.2s;
+    padding: 6px 33px;
+}
+
+#inbox-button:hover {
+    background-color: rgba(181, 2, 2, 0.757);
+}
+
+#dashboard-button {
+    background-color: rgb(5, 21, 168);
+}
+
+#dashboard-button:hover {
+    background-color: rgba(5, 21, 168, 0.702);
+    transition: background-color 0.2s;
+}
+
+/* SIGNUP.HTML (AND) LOGIN.HTML STYLES ---END--- */

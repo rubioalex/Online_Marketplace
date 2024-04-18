@@ -1,0 +1,54 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+    <p class="newitem-title">{{ title }}</p>
+
+    <div class="newitem-form-container">
+        <form action="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-row newitem-form-row">
+                <label for="category">Category: </label>
+                {{ form.category }}
+            </div>
+
+            <div class="form-row newitem-form-row">
+                <label for="name">Name: </label>
+                {{ form.name }}
+            </div>
+
+            <div class="form-row newitem-form-row">
+                <label for="description">Description: </label>
+                {{ form.description }}
+            </div>
+
+            <div class="form-row newitem-form-row">
+                <label for="price">Price: </label>
+                {{ form.price }}
+            </div>
+
+            <div class="form-row newitem-form-row">
+                <label for="image">Image: </label>
+                {{ form.image }}
+            </div>
+
+            {% if form.errors or form.non_field_error %}
+                <div class="errors-field">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="newitem-button">Submit</button>
+        </form>
+
+    </div>
+{% endblock %}

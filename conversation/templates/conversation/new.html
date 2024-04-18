@@ -1,0 +1,37 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}
+    New Conversation
+{% endblock %}
+
+{% block content %}
+    <div class="conv-form-container">
+        <p class="new-conv-title">
+            New Conversation
+        </p>
+
+        <form action="." method="POST">
+            {% csrf_token %}
+
+            <div class="form-row newitem-form-row">
+                <label style="
+                font-size: 15px;
+                font-weight: 500;
+                margin-bottom: 10px;" for="Content:">Content:</label>
+                {{ form.content }}
+            </div>
+
+            {% if form.errors or form.non_field_error %}
+                <div class="errors-field">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <button type="submit" id="conv-button" class="contact-seller-button">Send</button>
+        </form>
+    </div>
+{% endblock  %}

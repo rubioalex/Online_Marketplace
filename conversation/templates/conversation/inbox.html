@@ -1,0 +1,39 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}
+    Inbox
+{% endblock %}
+
+{% block content %}
+    <div class="conv-form-container">
+        <p class="new-conv-title">
+            Inbox
+        </p>
+
+    <div class="all-convos">
+        {% if conversations %}
+            {% for conversation in conversations %}
+                <a href="{% url 'conversation:detail' conversation.id %}">
+                    <div class="convo-body">
+                        <div class="">
+                            <img src="{{ conversation.item.image.url }}" class="avatar-conv" alt="">
+                        </div>
+
+                        <div>
+                            {% for member in conversation.members.all %}
+                                {% if member != request.user %}
+                                <p style="
+                                color: black;"><strong>{{ member.username }}</strong> | {{ conversation.modified_at }}</p>
+                                <p style="
+                                color: black;">{{ conversation.item.name }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>You have no messages.</p>
+        {% endif %}
+    </div>
+{% endblock %}

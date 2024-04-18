@@ -1,0 +1,53 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+
+{% block content %}
+    <div class="items-container">
+        <p class="container-title">Newest Items</p>
+
+        <div class="items-grid">
+            {% for item in items %}
+            <div class="item-card">
+                <a href="{% url 'item:detail' item.id %}">
+                    <div>
+                        <img class="item-image" src="{{ item.image.url }}" alt="">
+                    </div>
+
+                    <div class="item-description">
+                        <p class="item-name">{{ item.name }}</p>
+                        <p class="item-price">Price: {{ item.price }} $</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="items-container">
+        <p class="container-title">Categories</p>
+
+        <div class="items-grid">
+            {% for category in categories %}
+                <div>
+                    <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}">
+                        <div class="categories-card">
+                            <p class="category-name">{{ category.name }}</p>
+                            <p class="category-count">
+                                {% if category.items.count == 1 %}
+                                    1 item
+                                {% else %}
+                                    {{ category.items.count }} items
+                                {% endif %}
+                                </p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

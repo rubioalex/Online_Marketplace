@@ -1,0 +1,59 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}
+    Browse
+{% endblock %}
+
+{% block content %}
+    <div class="browse-main">
+        <div class="browse-sidebar">
+            <form action="{% url 'item:items' %}" method="GET">
+                <input type="text" name="query" class="browse-input" value="{{ query }}" placeholder="Find items...">
+
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+
+
+            <p class="ctgrs">Categories</p>
+
+            <ul style="
+            list-style-type: none;
+            margin-bottom: 50px;">
+                {% for category in categories %}
+                <li class="unfocused-category{% if category.id == category_id %} focused-category {% endif %}">
+                    <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}">
+                        {% if category.id == category_id %}
+                            > {{ category.name }}
+                        {% else %}
+                            {{ category.name }}
+                        {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+
+
+            <a href="{% url 'item:items' %}" class="clear-btn">Clear Filters</a>
+        </div>
+
+        <div class="items-container" id="browse-container">
+            <div class="items-grid" id="browse-grid">
+                {% for item in items %}
+                <div class="item-card">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div>
+                            <img class="item-image" src="{{ item.image.url }}" alt="">
+                        </div>
+    
+                        <div class="item-description">
+                            <p class="item-name">{{ item.name }}</p>
+                            <p class="item-price">Price: {{ item.price }} $</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
